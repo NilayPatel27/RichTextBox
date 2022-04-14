@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Text, ScrollView} from 'react-native';
+import {StyleSheet, Text, ScrollView,View} from 'react-native';
 import {
   actions,
   defaultActions,
@@ -7,6 +7,7 @@ import {
   RichToolbar,
 } from 'react-native-pell-rich-editor';
 import HTMLView from 'react-native-htmlview';
+import { VirtualizedListCellContextProvider } from 'react-native/Libraries/Lists/VirtualizedListContext';
 
 const EditorScreen = () => {
   const strikethrough = require('./camera.png'); //icon for strikethrough
@@ -46,6 +47,8 @@ const EditorScreen = () => {
 
   return (
     <>
+    <View style={{height:'100%',width:"100%",backgroundColor:'lightblue'}}>
+
       <Text style={styles.text}>Rich Text Box</Text>
       <RichEditor
         disabled={false}
@@ -132,6 +135,7 @@ const EditorScreen = () => {
       />
       {/* <Text style={styles.text}>Result</Text>
       <HTMLView value={article} stylesheet={styles} /> */}
+      </View>
     </>
   );
 };
@@ -152,7 +156,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 40,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
   },
   editor: {
     backgroundColor: 'black',
@@ -166,8 +170,11 @@ const styles = StyleSheet.create({
   },
   richBar: {
     height: 50,
-    backgroundColor: '#F5FCFF',
-    width: '100%',
+    backgroundColor: '#FFF',
+    width: '95%',
+    justifyContent:'center',
+    alignSelf:"center",
+    marginTop:10,
   },
   text: {
     fontWeight: 'bold',
