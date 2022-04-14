@@ -76,17 +76,13 @@ const EditorScreen = () => {
           actions.heading1,
           actions.undo,
           actions.redo,
-          actions.insertBulletsList,
-          actions.insertOrderedList,
           actions.checkboxList,
         ]}
         // map icons for self made actions
         iconMap={{
           [actions.heading1]: ({tintColor}) => (
             <Text style={[styles.tib, {color: tintColor}]}>H1</Text>
-          ),
-          [actions.setStrikethrough]: strikethrough,
-          ['insertVideo']: video,
+          )
         }}
         // insertVideo={insertVideo}
       />
@@ -102,6 +98,8 @@ const EditorScreen = () => {
         actions={[
           actions.insertImage,
           actions.removeFormat,
+          actions.insertBulletsList,
+          actions.insertOrderedList,
           'text',
           'backgroundColor',
           'html'
@@ -109,7 +107,9 @@ const EditorScreen = () => {
         iconMap={{
           text: require('./text.png'),
           backgroundColor: require('./backgroundColor.png'),
-          html: require('./html.png')
+          ['html']: ({tintColor}) => (
+            <Text style={[styles.html, {color: tintColor}]}>Html</Text>
+          )
         }}
         text={() => {
           RichText.current?.setForeColor('red');
@@ -119,7 +119,6 @@ const EditorScreen = () => {
         }}
         html={() => {
           RichText.current?.setContentHTML(`
-        <>
         <textarea id="w3review" name="w3review" style="height: 50%;width: 100%;">
             hello
           </textarea><div style="flex-direction: column;justify-self: center;width: auto;background-color: lightblue;margin-top: 10;">
@@ -129,7 +128,7 @@ const EditorScreen = () => {
                 <button type="button">I</button>
               </div>
             </div>
-            </>
+            
             `);
         }}
       />
@@ -175,10 +174,12 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignSelf:"center",
     marginTop:10,
+    borderWidth:1,
+    borderColor:'black'
   },
   text: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 25,
     textAlign:'center',
     marginVertical: 20,
     color:'#2d333a'
@@ -187,5 +188,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#2d333a',
     fontSize: 25,
+  },
+  html: {
+    textAlign: 'center',
+    color: '#2d333a',
+    fontSize: 15,
   },
 });
