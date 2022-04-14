@@ -10,8 +10,8 @@ import HTMLView from 'react-native-htmlview';
 import { VirtualizedListCellContextProvider } from 'react-native/Libraries/Lists/VirtualizedListContext';
 
 const EditorScreen = () => {
-  const strikethrough = require('./camera.png'); //icon for strikethrough
-  const video = require('./camera.png'); //icon for Addvideo
+  const strikethrough = require('./src/assets/images/camera.png'); //icon for strikethrough
+  const video = require('./src/assets/images/camera.png'); //icon for Addvideo
   const RichText = useRef(); //reference to the RichEditor component
   const [article, setArticle] = useState('');
 
@@ -105,8 +105,8 @@ const EditorScreen = () => {
           'html'
         ]}
         iconMap={{
-          text: require('./text.png'),
-          backgroundColor: require('./backgroundColor.png'),
+          text: require('./src/assets/images/text.png'),
+          backgroundColor: require('./src/assets/images/backgroundColor.png'),
           ['html']: ({tintColor}) => (
             <Text style={[styles.html, {color: tintColor}]}>Html</Text>
           )
